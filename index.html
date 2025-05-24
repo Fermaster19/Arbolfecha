@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árbol de Amor Animado</title>
+    <!-- Autoría y derechos -->
+    <meta name="author" content="Zero">
+    <meta name="copyright" content="Zero - Código libre no comercial">
+    <meta name="description" content="Árbol de Amor Animado: una sorpresa interactiva y romántica para dedicar a tu pareja o ser querido. Código libre para uso personal, educativo o de inspiración.">
+    <meta name="keywords" content="amor, sorpresa, romántico, dedicatoria, animación, árbol, corazones, pareja, aniversario, regalo digital">
+    <meta name="robots" content="index, follow">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.mobile.css" media="only screen and (max-width: 600px)">
+    <style>
+      .tree-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 400px;
+        z-index: 2;
+      }
+      .animated-heart {
+        transform-origin: center;
+        animation: beat 1s infinite;
+      }
+      @keyframes beat {
+        0%, 100% { transform: scale(1); }
+        20% { transform: scale(1.1); }
+        40% { transform: scale(0.95); }
+        60% { transform: scale(1.08); }
+        80% { transform: scale(1); }
+      }
+    </style>
+</head>
+<body>
+  <script src="script.js"></script>
+    <div id="floating-objects"></div>
+    <div class="dedication-text" id="dedication-text">
+      <div class="signature" id="signature"></div>
+    </div>
+    <div class="countdown" id="countdown"></div>
+    <div class="tree-container" id="tree-container"></div>
+<audio id="bg-music" loop>
+
+  <source src="teamoymas.mp3" type="audio/mpeg">
+
+  Tu navegador no soporta audio.
+</audio>
+
+<button id="toggle-audio" style="
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color:#edecee00;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 1000;
+  display: none;
+">🔊</button>
+
+<script>
+  const audio = document.getElementById('bg-music');
+  const toggleButton = document.getElementById('toggle-audio');
+
+  document.body.addEventListener('click', () => {
+    audio.play();
+    toggleButton.style.display = 'block';
+  }, { once: true });
+
+  toggleButton.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+      toggleButton.textContent = '🔊';
+    } else {
+      audio.pause();
+      toggleButton.textContent = '🔇';
+    }
+  });
+</script>
+    
+</body>
+</html>
